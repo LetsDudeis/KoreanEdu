@@ -1,22 +1,9 @@
 {
-  "name": "ai-jinwoo-frontend",
-  "version": 2,
-  "builds": [
+  "name": "ai-jinwoo",
+  "rewrites": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ],
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "installCommand": "npm install"
+  ]
 }

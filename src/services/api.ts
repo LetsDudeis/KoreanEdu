@@ -1,6 +1,5 @@
-// API 기본 설정
-const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:3001/api";
+// API 기본 설정 - Vercel API Routes 사용
+const API_BASE_URL = "/api";
 
 // API 응답 타입 정의
 export interface ChatRequest {

@@ -154,61 +154,62 @@ KPI: **AI 진우를 만들어서 팬들과 한국말로 5마디 이상 대화하
 
 이 프로젝트는 K-pop 팬들이 한국어를 재미있게 학습할 수 있도록 돕는 것을 목표로 합니다.
 
-## 🚀 배포 가이드
+## 🚀 **간단한 Vercel 한번에 배포**
 
-### 1. 백엔드 배포 (Railway)
+### **✨ 왜 Vercel 한번에 배포인가?**
 
-1. **Railway 계정 생성**: https://railway.app 에서 GitHub 계정으로 로그인
-2. **New Project → Deploy from GitHub repo** 선택
-3. **이 저장소 선택**
-4. **환경변수 설정**:
-   - `NODE_ENV=production`
-   - `PORT=3001`
-5. **Deploy** 클릭
-6. 배포 완료 후 **생성된 URL 복사** (예: `https://your-app-name.railway.app`)
+- ✅ **관리 포인트 1개로 통합** (Railway + Vercel → Vercel만)
+- ✅ **설정 훨씬 간단** (환경변수 불필요)
+- ✅ **무료 플랜으로 충분**
+- ✅ **CORS 문제 없음**
+- ✅ **API Routes 자동 배포**
 
-### 2. 프론트엔드 배포 (Vercel)
+### **🚀 배포 과정 (3분 완료)**
 
 1. **Vercel 계정 생성**: https://vercel.com 에서 GitHub 계정으로 로그인
-2. **New Project → Import Git Repository** 선택
+2. **"New Project" → "Import Git Repository"** 선택
 3. **이 저장소 선택**
-4. **환경변수 설정**:
-   - `VITE_API_URL=https://your-app-name.railway.app/api` (Railway에서 복사한 URL + /api)
-5. **Deploy** 클릭
-6. 배포 완료!
+4. **Deploy 클릭** (환경변수 설정 불필요!)
+5. **완료! 🎉**
 
-### 3. 환경변수 설정
+### **📁 프로젝트 구조 (Vercel API Routes)**
 
-**프론트엔드 (.env 파일 생성)**:
-
-```env
-VITE_API_URL=https://your-railway-app.railway.app/api
+```
+├── api/                   # Vercel API Routes (백엔드)
+│   ├── health.ts         # 서버 상태 확인
+│   ├── chat.ts           # AI 진우 채팅 API
+│   ├── jinu-voice.ts     # 진우 음성 API
+│   ├── translate.ts      # 번역 API
+│   └── missions.ts       # 미션 API
+├── src/                  # React 프론트엔드
+│   ├── routes/          # 라우트 페이지들
+│   ├── hooks/           # 음성 인식/TTS 훅
+│   └── services/        # API 서비스
+└── vercel.json          # Vercel 설정
 ```
 
-**백엔드 (Railway 대시보드에서 설정)**:
+### **🔧 API 엔드포인트**
 
-```env
-NODE_ENV=production
-PORT=3001
-FRONTEND_URL=https://your-vercel-app.vercel.app
-```
+- `GET /api/health` - 서버 상태 확인
+- `POST /api/chat` - AI 진우와 채팅
+- `POST /api/jinu-voice` - 진우 음성 생성
+- `POST /api/translate` - 번역 (한↔영)
+- `GET /api/missions` - 미션 목록
 
-### 4. 도메인 연결 (선택사항)
-
-- **Vercel**: Settings → Domains에서 커스텀 도메인 추가
-- **Railway**: Settings → Custom Domain에서 도메인 연결
-
-### 5. 배포 완료 확인
+### **✅ 배포 완료 확인**
 
 1. Vercel에서 제공한 URL 접속 (예: `https://ai-jinwoo.vercel.app`)
-2. 채팅 기능이 정상 작동하는지 확인
-3. 음성 인식/재생 기능 테스트 (HTTPS에서만 작동)
+2. 채팅 기능 테스트
+3. 음성 인식/재생 테스트 (HTTPS에서만 작동)
+4. 번역 기능 테스트
 
-### 배포 시 주의사항
+### **💡 배포의 장점**
 
-- **HTTPS 필수**: 음성 인식 기능을 위해 HTTPS 환경 필요
-- **CORS 설정**: 백엔드에서 프론트엔드 도메인 허용 확인
-- **환경변수**: 배포 후 올바른 API URL로 설정 확인
+- **무료**: Vercel 무료 플랜으로 충분
+- **빠름**: 글로벌 CDN으로 빠른 로딩
+- **안정적**: 99.99% 가동률
+- **자동 HTTPS**: SSL 인증서 자동 적용
+- **자동 배포**: Git push시 자동 재배포
 
 Welcome to your new TanStack app!
 
