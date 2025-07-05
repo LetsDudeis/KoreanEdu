@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   XMarkIcon,
   SpeakerWaveIcon,
@@ -9,7 +9,6 @@ import {
   ArrowUpIcon,
   MicrophoneIcon,
   StopIcon,
-  ChatBubbleLeftRightIcon,
   ComputerDesktopIcon,
 } from "@heroicons/react/24/outline";
 import { useSpeechRecognition } from "../hooks/useSpeechRecognition";
@@ -72,7 +71,7 @@ function ChatScreen() {
     stopListening,
     resetTranscript,
   } = useSpeechRecognition();
-  const { speak, stop: stopSpeaking } = useTextToSpeech();
+  const { speak } = useTextToSpeech();
 
   const missions = [
     "1. 진우에게 인사해보세요",
