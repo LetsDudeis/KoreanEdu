@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vercel dev",
+    "dev": "vite --port 3000",
+    "vercel:dev": "vercel dev",
     "start": "vite --port 3000",
     "build": "vite build && tsc",
     "serve": "vite preview",
