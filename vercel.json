@@ -1,8 +1,7 @@
 {
-  "name": "ai-jinwoo",
   "rewrites": [
     {
-      "source": "/((?!api/).*)",
+      "source": "/((?!api/|src/|@vite/|@react-refresh|.*\\.).*)",
       "destination": "/index.html"
     }
   ]
