@@ -38,43 +38,45 @@ function ScenarioSelection() {
       {/* Missions */}
       <section className="px-6 pb-6">
         <h2 className="text-xl font-semibold mb-4">미션</h2>
-        <div className="space-y-3">
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center">
+        <div className="space-y-4">
+          <div className="flex items-start space-x-3">
+            <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center mt-1">
               <span className="text-white font-semibold text-sm">1</span>
             </div>
-            <span className="text-gray-300">진우에게 인사해보세요</span>
-            <span className="text-gray-500 text-sm">Greet Jinwoo</span>
+            <div className="flex-1">
+              <span className="text-gray-300 text-base block">
+                진우에게 인사하고 자기소개해보세요
+              </span>
+              <span className="text-gray-500 text-sm">
+                Greet Jinwoo and introduce yourself
+              </span>
+            </div>
           </div>
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center">
+          <div className="flex items-start space-x-3">
+            <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center mt-1">
               <span className="text-white font-semibold text-sm">2</span>
             </div>
-            <span className="text-gray-300">자기소개를 해보세요</span>
-            <span className="text-gray-500 text-sm">Introduce yourself</span>
+            <div className="flex-1">
+              <span className="text-gray-300 text-base block">
+                일상이나 취미에 대해 이야기해보세요
+              </span>
+              <span className="text-gray-500 text-sm">
+                Talk about your daily life or hobbies
+              </span>
+            </div>
           </div>
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center">
+          <div className="flex items-start space-x-3">
+            <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center mt-1">
               <span className="text-white font-semibold text-sm">3</span>
             </div>
-            <span className="text-gray-300">진우에게 질문해보세요</span>
-            <span className="text-gray-500 text-sm">Ask Jinwoo a question</span>
-          </div>
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center">
-              <span className="text-white font-semibold text-sm">4</span>
+            <div className="flex-1">
+              <span className="text-gray-300 text-base block">
+                진우에게 궁금한 것을 질문해보세요
+              </span>
+              <span className="text-gray-500 text-sm">
+                Ask Jinwoo questions about anything you're curious about
+              </span>
             </div>
-            <span className="text-gray-300">관심사에 대해 이야기해보세요</span>
-            <span className="text-gray-500 text-sm">
-              Talk about your interests
-            </span>
-          </div>
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center">
-              <span className="text-white font-semibold text-sm">5</span>
-            </div>
-            <span className="text-gray-300">진우와 작별 인사를 해보세요</span>
-            <span className="text-gray-500 text-sm">Say goodbye to Jinwoo</span>
           </div>
         </div>
       </section>

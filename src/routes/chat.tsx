@@ -74,11 +74,9 @@ function ChatScreen() {
   const { speak } = useTextToSpeech();
 
   const missions = [
-    "1. 진우에게 인사해보세요",
-    "2. 자기소개를 해보세요",
-    "3. 진우에게 질문해보세요",
-    "4. 관심사에 대해 이야기해보세요",
-    "5. 진우와 작별 인사를 해보세요",
+    "1. 진우에게 인사하고 자기소개해보세요",
+    "2. 일상이나 취미에 대해 이야기해보세요",
+    "3. 진우에게 궁금한 것을 질문해보세요",
   ];
 
   const handleSendMessage = async () => {
@@ -169,6 +167,15 @@ function ChatScreen() {
       }
     }
   };
+
+  // Auto-play initial message from Jinwoo
+  useEffect(() => {
+    // 컴포넌트가 마운트되면 첫 번째 메시지(진우 인사말) 자동 재생
+    const firstMessage = messages[0];
+    if (firstMessage && !firstMessage.isUser) {
+      handlePlayAudio(firstMessage.text, firstMessage.id);
+    }
+  }, []); // 빈 dependency array로 마운트 시에만 실행
 
   // Use transcript from speech recognition
   useEffect(() => {
@@ -381,24 +388,61 @@ function ChatScreen() {
 
       {/* Mission Progress */}
       <div className="p-4 border-b border-gray-800">
-        <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center justify-between mb-3">
           <span className="text-sm text-gray-400">
-            미션 ({completedMissions}/{missions.length} 완료)
+            미션 진행 상황 ({completedMissions}/{missions.length})
           </span>
-          <div className="flex items-center space-x-2">
-            <span className="text-sm text-gray-400">▲</span>
-            <span className="text-sm text-gray-400">▼</span>
-          </div>
+          <span className="text-xs text-blue-400 font-medium">
+            {Math.round((completedMissions / missions.length) * 100)}%
+          </span>
         </div>
+
+        {/* Progress Bar */}
+        <div className="w-full bg-gray-700 rounded-full h-2 mb-4">
+          <div
+            className="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all duration-500 ease-out"
+            style={{ width: `${(completedMissions / missions.length) * 100}%` }}
+          />
+        </div>
+
+        {/* Current Mission */}
         <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
-            <span className="text-white font-semibold text-sm">
-              {currentMission + 1}
-            </span>
+          <div
+            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+              completedMissions === missions.length
+                ? "bg-green-600"
+                : "bg-blue-600"
+            }`}
+          >
+            {completedMissions === missions.length ? (
+              <span className="text-white">✓</span>
+            ) : (
+              <span className="text-white font-semibold text-sm">
+                {currentMission + 1}
+              </span>
+            )}
           </div>
           <span className="text-gray-300 text-sm">
-            {missions[currentMission]}
+            {completedMissions === missions.length
+              ? "🎉 모든 미션 완료! 진우와의 대화가 끝났어요!"
+              : missions[currentMission]}
           </span>
+        </div>
+
+        {/* Mission Steps Indicator */}
+        <div className="flex justify-center space-x-2 mt-3">
+          {missions.map((_, index) => (
+            <div
+              key={index}
+              className={`w-2 h-2 rounded-full transition-all ${
+                index < completedMissions
+                  ? "bg-green-500"
+                  : index === currentMission
+                    ? "bg-blue-500"
+                    : "bg-gray-600"
+              }`}
+            />
+          ))}
         </div>
       </div>
 
