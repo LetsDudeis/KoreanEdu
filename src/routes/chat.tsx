@@ -170,6 +170,15 @@ function ChatScreen() {
     }
   };
 
+  // Auto-play initial message from Jinwoo
+  useEffect(() => {
+    // 컴포넌트가 마운트되면 첫 번째 메시지(진우 인사말) 자동 재생
+    const firstMessage = messages[0];
+    if (firstMessage && !firstMessage.isUser) {
+      handlePlayAudio(firstMessage.text, firstMessage.id);
+    }
+  }, []); // 빈 dependency array로 마운트 시에만 실행
+
   // Use transcript from speech recognition
   useEffect(() => {
     if (isCancelled) {
